@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP TEST</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url(https://cdn.jsdelivr.net/gh/zkn-app/fonts@latest/fonts/roboto.min.css);
+        body{
+            font-family: roboto;
+        }
+    </style>
+</head>
+<body class="bg-white p-0">
+    <nav class="bg-slate-50 p-2 border-b">
+        <h1 class="text-slate-500 text-xl md:text-3xl font-bold">IP-tools <span class="text-xs">by<span class="bg-gradient-to-r from-cyan-500 to-blue-500 dark:from-violet-700 dark:to-fuchsia-700 bg-clip-text text-transparent"> zkn</span></span></h1>
+    </nav>
+    <div class="text-gray-500 m-4">
+        <div class="text-wrap overflow-x-auto md:overflow-x-hidden">
+            <h1 class="text-xl font-bold">Il tuo indirizzo ip</h1>
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-white border-b">
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr id="ipwhois" class="bg-white border-b">
+                        <td class="px-8 py-4">ipwhois</td>
+                        <td id="ip" class="px-8 py-4"></td>
+                        <td id="country" class="px-8 py-4"></td>
+                        <td id="isp" class="px-8 py-4"></td>
+                        <td id="asn" class="px-8 py-4"></td>
+                        <td id="city" class="px-8 py-4"></td>
+                    </tr>
+                    <tr id="ip-api" class="bg-white border-b">
+                        <td class="px-8 py-4">ip-api</td>
+                        <td id="ip" class="px-8 py-4"></td>
+                        <td id="country" class="px-8 py-4"></td>
+                        <td id="isp" class="px-8 py-4"></td>
+                        <td id="asn" class="px-8 py-4"></td>
+                        <td id="city" class="px-8 py-4"></td>
+                    </tr>
+                    <tr id="ipgeolocation" class="bg-white border-b">
+                        <td class="px-8 py-4">ipgeolocation</td>
+                        <td id="ip" class="px-8 py-4"></td>
+                        <td id="country" class="px-8 py-4"></td>
+                        <td id="isp" class="px-8 py-4"></td>
+                        <td id="asn" class="px-8 py-4"></td>
+                        <td id="city" class="px-8 py-4"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            CDN endpoint: <p id="end_ip-api"><span id="ip"></span> | <span id="isp"></span></p>
+        </div>
+    </div>
+    <script src="getip.js"></script>
+</body>
+</html>
