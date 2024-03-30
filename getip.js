@@ -28,7 +28,7 @@ ip_api_XML.onreadystatechange = function(){
         ipapiInfo.querySelector("#asn").innerText = ip_api.as
     }
 }
-ip_api_XML.open('GET', 'http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,isp,org,as,query', true);
+ip_api_XML.open('GET', 'https://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,isp,org,as,query', true);
 ip_api_XML.send();
 
 const ipgeolocation = document.getElementById("ipgeolocation");
@@ -55,7 +55,7 @@ dnsendpoint_ip_api_XML.onreadystatechange = function(){
         dnsendpoint_ip_api.querySelector("#isp").innerText = ip_api.dns.geo;
     }
 }
-dnsendpoint_ip_api_XML.open('GET', 'http://edns.ip-api.com/json');
+dnsendpoint_ip_api_XML.open('GET', 'https://edns.ip-api.com/json');
 dnsendpoint_ip_api_XML.send();
 
 
