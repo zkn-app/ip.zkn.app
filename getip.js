@@ -95,11 +95,11 @@ let freeipapi_XML = new XMLHttpRequest();
 freeipapi_XML.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200){
         let ip_api = JSON.parse(this.responseText);
-        freeipapi.querySelector("#ip").innerText = ip_api.ip;
-        freeipapi.querySelector("#country").innerText = ip_api.country_name;
-        freeipapi.querySelector("#city").innerText = ip_api.city;
-        freeipapi.querySelector("#isp").innerText = ip_api.org;
-        freeipapi.querySelector("#asn").innerText = ip_api['asn'];
+        freeipapi.querySelector("#ip").innerText = ip_api.ipAddress;
+        freeipapi.querySelector("#country").innerText = ip_api.countryName;
+        freeipapi.querySelector("#city").innerText = ip_api.cityName;
+        freeipapi.querySelector("#isp").innerText = "null";
+        freeipapi.querySelector("#asn").innerText = "null";
     }
 }
 freeipapi_XML.open('GET', 'https://freeipapi.com/api/json/');
