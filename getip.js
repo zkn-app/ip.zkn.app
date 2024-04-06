@@ -28,7 +28,7 @@ ip_api_XML.onreadystatechange = function(){
         ipapiInfo.querySelector("#asn").innerText = ip_api.as
     }
 }
-ip_api_XML.open('GET', 'https://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,isp,org,as,query', true);
+ip_api_XML.open('GET', 'http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,isp,org,as,query', true);
 ip_api_XML.send();
 
 const ipgeolocation = document.getElementById("ipgeolocation");
@@ -40,11 +40,70 @@ ipgeolocation_XML.onreadystatechange = function(){
         ipgeolocation.querySelector("#country").innerText = ip_api.country_name;
         ipgeolocation.querySelector("#city").innerText = ip_api.city;
         ipgeolocation.querySelector("#isp").innerText = ip_api.isp;
+        ipgeolocation.querySelector("#asn").innerText = "null";
     }
 }
 ipgeolocation_XML.open('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=08638ed1c63a477bb1f84b38bafeb1e8&ip=' + ip, true);
 ipgeolocation_XML.send();
 
+const ipdataco = document.getElementById("ipdataco");
+let ipdataco_XML = new XMLHttpRequest();
+ipdataco_XML.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        let ip_api = JSON.parse(this.responseText);
+        ipdataco.querySelector("#ip").innerText = ip_api.ip;
+        ipdataco.querySelector("#country").innerText = ip_api.country_name;
+        ipdataco.querySelector("#city").innerText = ip_api.city;
+        ipdataco.querySelector("#isp").innerText = ip_api['asn'].name;
+        ipdataco.querySelector("#asn").innerText = ip_api['asn'].asn;
+    }
+}
+ipdataco_XML.open('GET', 'https://api.ipdata.co/?api-key=98ef8fdb3c05da4960af979d6e7656a546d0bd66d8c11b0add46ff8f');
+ipdataco_XML.send();
+
+const ipinfo = document.getElementById("ipinfo");
+let ipinfo_XML = new XMLHttpRequest();
+ipinfo_XML.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        let ip_api = JSON.parse(this.responseText);
+        ipinfo.querySelector("#ip").innerText = ip_api.ip;
+        ipinfo.querySelector("#country").innerText = ip_api.country;
+        ipinfo.querySelector("#city").innerText = ip_api.city;
+        ipinfo.querySelector("#isp").innerText = ip_api.org;
+    }
+}
+ipinfo_XML.open('GET', 'https://ipinfo.io/json');
+ipinfo_XML.send();
+
+const ipapi = document.getElementById("ipapi");
+let ipapi_XML = new XMLHttpRequest();
+ipapi_XML.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        let ip_api = JSON.parse(this.responseText);
+        ipapi.querySelector("#ip").innerText = ip_api.ip;
+        ipapi.querySelector("#country").innerText = ip_api.country_name;
+        ipapi.querySelector("#city").innerText = ip_api.city;
+        ipapi.querySelector("#isp").innerText = ip_api.org;
+        ipapi.querySelector("#asn").innerText = ip_api['asn'];
+    }
+}
+ipapi_XML.open('GET', 'https://ipapi.co/json/');
+ipapi_XML.send();
+
+const freeipapi = document.getElementById("freeipapi");
+let freeipapi_XML = new XMLHttpRequest();
+freeipapi_XML.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        let ip_api = JSON.parse(this.responseText);
+        freeipapi.querySelector("#ip").innerText = ip_api.ip;
+        freeipapi.querySelector("#country").innerText = ip_api.country_name;
+        freeipapi.querySelector("#city").innerText = ip_api.city;
+        freeipapi.querySelector("#isp").innerText = ip_api.org;
+        freeipapi.querySelector("#asn").innerText = ip_api['asn'];
+    }
+}
+freeipapi_XML.open('GET', 'https://freeipapi.com/api/json/');
+freeipapi_XML.send();
 
 const dnsendpoint_ip_api = document.getElementById("end_ip-api");
 let dnsendpoint_ip_api_XML = new XMLHttpRequest();
