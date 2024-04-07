@@ -16,21 +16,6 @@ ipwhois_XMLHttp.open('GET', 'https://ipwho.is/', true);
 ipwhois_XMLHttp.send();
 
 
-const ipapiInfo = document.getElementById("ip-api");
-let ip_api_XML = new XMLHttpRequest();
-ip_api_XML.onreadystatechange = function(){
-    if (this.readyState == 4 && this.status == 200){
-        let ip_api = JSON.parse(this.responseText);
-        ipapiInfo.querySelector("#ip").innerText = ip_api.query;
-        ipapiInfo.querySelector("#country").innerText = ip_api.country;
-        ipapiInfo.querySelector("#city").innerText = ip_api.city;
-        ipapiInfo.querySelector("#isp").innerText = ip_api.isp;
-        //ipapiInfo.querySelector("#asn").innerText = ip_api.as
-    }
-}
-ip_api_XML.open('GET', 'http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,isp,org,as,query', true);
-ip_api_XML.send();
-
 const ipgeolocation = document.getElementById("ipgeolocation");
 let ipgeolocation_XML = new XMLHttpRequest();
 ipgeolocation_XML.onreadystatechange = function(){
@@ -105,6 +90,8 @@ freeipapi_XML.onreadystatechange = function(){
 freeipapi_XML.open('GET', 'https://freeipapi.com/api/json/');
 freeipapi_XML.send();
 
+
+//ip-api.com dns
 const dnsendpoint_ip_api = document.getElementById("end_ip-api");
 let dnsendpoint_ip_api_XML = new XMLHttpRequest();
 dnsendpoint_ip_api_XML.onreadystatechange = function(){
@@ -114,12 +101,49 @@ dnsendpoint_ip_api_XML.onreadystatechange = function(){
         dnsendpoint_ip_api.querySelector("#isp").innerText = ip_api.dns.geo;
     }
 }
-dnsendpoint_ip_api_XML.open('GET', 'https://edns.ip-api.com/json');
+dnsendpoint_ip_api_XML.open('GET', 'https://' + randomAlphaString(32) + '.edns.ip-api.com/json');
 dnsendpoint_ip_api_XML.send();
 
+//Shark dns
+const sharkdns = document.getElementById("sharkdns");
+let sharkdns_XML = new XMLHttpRequest();
+sharkdns_XML.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        let ip_api = JSON.parse(this.responseText);
+        let ip_data = ip_api[Object.keys(ip_api)[0]]
+        sharkdns.querySelector("#ip").innerText = ip_data.IP;
+        sharkdns.querySelector("#isp").innerText = ip_data.City + " " + ip_data.Country + " " + ip_data.ISP;
+    }
+}
+sharkdns_XML.open('GET', 'https://' + randomAlphaString(16) + '.ipv4.surfsharkdns.com/');
+sharkdns_XML.send();
+
+//browserleaks.org/
+const browserleaks = document.getElementById("browserleaks");
+let browserleaks_XML = new XMLHttpRequest();
+browserleaks_XML.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+        let ip_api = JSON.parse(this.responseText);
+        let ip_data = ip_api[Object.keys(ip_api)[0]]
+        browserleaks.querySelector("#ip").innerText = Object.keys(ip_api);
+        browserleaks.querySelector("#isp").innerText = ip_data[1] + " " + ip_data[2];
+    }
+}
+browserleaks_XML.open('GET', 'https://' + randomAlphaString(16) + '.dns4.browserleaks.org/');
+browserleaks_XML.send();
 
 
+//Generate random alpha numeric string
+function randomAlphaString(max){
+    const random_str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let out_str = "";
+    for(i = 0; i < max; i++){
+        out_str += random_str.charAt(Math.floor(Math.random()*random_str.length))
+    }
+    return out_str;
+}
 
+console.log(randomAlphaString(32))
 
 
 
