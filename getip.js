@@ -25,7 +25,7 @@ ip_api_XML.onreadystatechange = function(){
         ipapiInfo.querySelector("#country").innerText = ip_api.country;
         ipapiInfo.querySelector("#city").innerText = ip_api.city;
         ipapiInfo.querySelector("#isp").innerText = ip_api.isp;
-        ipapiInfo.querySelector("#asn").innerText = ip_api.as
+        //ipapiInfo.querySelector("#asn").innerText = ip_api.as
     }
 }
 ip_api_XML.open('GET', 'http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,isp,org,as,query', true);
@@ -40,7 +40,7 @@ ipgeolocation_XML.onreadystatechange = function(){
         ipgeolocation.querySelector("#country").innerText = ip_api.country_name;
         ipgeolocation.querySelector("#city").innerText = ip_api.city;
         ipgeolocation.querySelector("#isp").innerText = ip_api.isp;
-        ipgeolocation.querySelector("#asn").innerText = "null";
+        ipgeolocation.querySelector("#asn").innerText = null;
     }
 }
 ipgeolocation_XML.open('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=08638ed1c63a477bb1f84b38bafeb1e8&ip=' + ip, true);
@@ -98,8 +98,8 @@ freeipapi_XML.onreadystatechange = function(){
         freeipapi.querySelector("#ip").innerText = ip_api.ipAddress;
         freeipapi.querySelector("#country").innerText = ip_api.countryName;
         freeipapi.querySelector("#city").innerText = ip_api.cityName;
-        freeipapi.querySelector("#isp").innerText = "null";
-        freeipapi.querySelector("#asn").innerText = "null";
+        freeipapi.querySelector("#isp").innerText = null;
+        freeipapi.querySelector("#asn").innerText = null;
     }
 }
 freeipapi_XML.open('GET', 'https://freeipapi.com/api/json/');
