@@ -1,3 +1,5 @@
+let ip_addrInfo = {};
+
 //ipwhois
 const ipwhoisInfo = document.getElementById("ipwhois");
 fetch("https://ipwho.is/")
@@ -8,11 +10,13 @@ fetch("https://ipwho.is/")
         return response.json();
     })
     .then(data => {
+        ip_addrInfo.ipwhois = data.ip;
         ipwhoisInfo.querySelector(".ip").innerText = data.ip;
         ipwhoisInfo.querySelector(".country").innerText = data.country;
         ipwhoisInfo.querySelector(".city").innerText = data.city;
         ipwhoisInfo.querySelector(".isp").innerText = data.connection.isp;
         ipwhoisInfo.querySelector(".asn").innerText = data.connection.asn
+        
     })
     .catch(error => {
         
@@ -31,6 +35,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=08638ed1c63a477bb1f84b38bafeb1e
         return response.json();
     })
     .then(data => {
+        ip_addrInfo.ipgeolocation = data.ip;
         ipgeolocation.querySelector(".ip").innerText = data.ip;
         ipgeolocation.querySelector(".country").innerText = data.country_name;
         ipgeolocation.querySelector(".city").innerText = data.city;
@@ -53,6 +58,7 @@ fetch("https://api.ipdata.co/?api-key=98ef8fdb3c05da4960af979d6e7656a546d0bd66d8
         return response.json();
     })
     .then(data => {
+        ip_addrInfo.ipdataco = data.ip;
         ipdataco.querySelector(".ip").innerText = data.ip;
         ipdataco.querySelector(".country").innerText = data.country_name;
         ipdataco.querySelector(".city").innerText = data.city;
@@ -75,6 +81,7 @@ fetch("https://ipinfo.io/json")
         return response.json();
     })
     .then(data => {
+        ip_addrInfo.ipinfo = data.ip;
         ipinfo.querySelector(".ip").innerText = data.ip;
         ipinfo.querySelector(".country").innerText = data.country;
         ipinfo.querySelector(".city").innerText = data.city;
@@ -98,6 +105,7 @@ fetch("https://ipapi.co/json/")
         return response.json();
     })
     .then(data => {
+        ip_addrInfo.ipapi = data.ip;
         ipapi.querySelector(".ip").innerText = data.ip;
         ipapi.querySelector(".country").innerText = data.country_name;
         ipapi.querySelector(".city").innerText = data.city;
@@ -124,7 +132,7 @@ fetch("https://freeipapi.com/api/json/")
     return response.json(); // Trasforma la risposta in JSON
   })
   .then(data => {
-    
+    ip_addrInfo.freeipapi = data.ipAddress;
     freeipapi.querySelector(".ip").innerText = data.ipAddress || "Non disponibile";
     freeipapi.querySelector(".country").innerText = data.countryName || "Non disponibile";
     freeipapi.querySelector(".city").innerText = data.cityName || "Non disponibile";
@@ -180,9 +188,13 @@ const ip_container =  document.getElementById("ip-container");
 const hide_ip =  document.getElementById("hide-ip");
 hide_ip.addEventListener('change', () => {
     ip_container.querySelectorAll('.ip').forEach(function(elem){
-        console.log(elem.innerText);
         if(elem.innerText === "Ip Hidden"){
-            elem.innerText = "Non Hidden";
+            //console.log(ip_addrInfo[elem.parentElement.id])
+            if(ip_addrInfo[elem.parentElement.id] == undefined){
+                elem.innerText = "Error";
+            }else{
+                elem.innerText = ip_addrInfo[elem.parentElement.id];
+            }
         }else{
             elem.innerText = "Ip Hidden";
         }
@@ -192,3 +204,4 @@ hide_ip.addEventListener('change', () => {
 
 })
 
+//console.log(ip_addrInfo)
