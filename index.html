@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP TEST</title>
+    <title>ip.zkn.app | DNS-IP Checker</title>
+    <meta name="description" content="Scopri i dettagli della tua connessione Internet, inclusi il tuo indirizzo IP, endpoint DNS e molto altro.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/gh/zkn-app/zkn.app@master/sitePoint.js"></script>
     <style>
@@ -61,12 +62,33 @@
                         </div>
                     </div>
            
-        </div>   
+        </div> 
         <div>
-            CDN endpoint: <p id="end_ip-api"><span class="ip"></span>  <span class="isp"></span></p>
-            CDN endpoint: <p id="sharkdns"><span class="ip"></span>  <span class="isp"></span></p>
-        </div>
-
+            <div id="edns-container" class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
+                <h1 class="text-xl font-bold">CDN endpoint</h1> 
+                <div id="end_ip-api" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5">
+                    <dd class="text-slate-800">ip-api.com</dd>
+                    <dd class="ip col-span-2 text-slate-500"></dd>  
+                    <dd class="isp col-span-2 text-slate-800"></dd>
+                </div>
+                <div id="sharkdns" class="py-4 grid sm:grid-cols-2 md:grid-cols-5">
+                    <dd class="text-slate-800">ip-api.com</dd>
+                    <dd class="ip col-span-2 text-slate-500"></dd>  
+                    <dd class="isp col-span-2 text-slate-800"></dd>
+                </div>
+            </div>
+            <div id="edns-container" class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
+                <h1 class="text-xl font-bold">Minaccia: <span id="is_threat"></span></h1> 
+                <div id="ipdata-threat" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5">
+                    <dd class="col-span-2 text-slate-500">Tor: <span id="is_tor"></span></dd>  
+                    <dd class="col-span-2 text-slate-500">Porxy: <span id="is_proxy"></span></dd>  
+                    <dd class="col-span-2 text-slate-800">Datacenter: <span id="is_datacenter"></span></dd>
+                    <dd class="col-span-2 text-slate-500">Anonymous: <span id="is_anonymous"></span></dd>  
+                    <dd class="col-span-2 text-slate-800">Abuser: <span id="is_known_abuser"></span></dd>
+                    <dd class="col-span-2 text-slate-500">Attacker: <span id="is_known_attacker"></span></dd>  
+                </div>
+            </div>
+        </div>  
     </div>
     
     <script src="getip.js"></script>

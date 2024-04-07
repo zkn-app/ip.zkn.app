@@ -64,6 +64,14 @@ fetch("https://api.ipdata.co/?api-key=98ef8fdb3c05da4960af979d6e7656a546d0bd66d8
         ipdataco.querySelector(".city").innerText = data.city;
         ipdataco.querySelector(".isp").innerText = data['asn'].name;
         ipdataco.querySelector(".asn").innerText = data['asn'].asn;
+        //codice temporaneo
+        document.getElementById('is_threat').innerText = data.threat.is_threat;
+        document.getElementById('is_tor').innerText = data.threat.is_tor;
+        document.getElementById('is_proxy').innerText = data.threat.is_proxy;
+        document.getElementById('is_datacenter').innerText = data.threat.is_datacenter;
+        document.getElementById('is_anonymous').innerText = data.threat.is_anonymous;
+        document.getElementById('is_known_abuser').innerText = data.threat.is_known_abuser;
+        document.getElementById('is_known_attacker').innerText = data.threat.is_known_attacker;
     })
     .catch(error => {
         
