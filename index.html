@@ -19,50 +19,56 @@
     </nav>
     <div class="lg:grid grid-cols-2 lg:gap-4">
         <!-- Ip info container -->
-        <div class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
-                    <h1 class="text-xl font-bold">Il tuo indirizzo ip</h1>
+        <div id="ip-container" class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
+                    <div  class="inline-flex">
+                        <h1 class="text-xl font-bold">Il tuo indirizzo ip </h1>
+                            <label id="hide-ip" class="inline-flex cursor-pointer pl-8">
+                                <input type="checkbox" value="hide-ip" class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                <span class="ms-3 text-sm font-medium text-gray-900">Hide ip</span>
+                            </label>
+                    </div>
                     <div class="w-full font-medium">
                         <div id="ipwhois" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5">
                             <dd class="text-slate-800">ipwhois.io</dd>
-                            <dd id="ip" class="col-span-2 text-slate-500">Error</dd>
-                            <dd class="col-span-2 text-slate-800"><span id="country"></span>  <span id="isp">Try to disable adblock</span>  <span id="asn"></span>  <span id="city"></span></dd>
+                            <dd id="ip" class="ip col-span-2 text-slate-500">Error</dd>
+                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
                         </div>
                         <div id="ipgeolocation" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5">
                             <dd class="text-slate-800">ipgeolocation.io</dd>
-                            <dd id="ip" class="col-span-2 text-slate-500">Error.</dd>
-                            <dd class="col-span-2 text-slate-800"><span id="country"></span>  <span id="isp">Try to disable adblock</span>  <span id="asn"></span>  <span id="city"></span></dd>
+                            <dd id="" class="ip col-span-2 text-slate-500">Error.</dd>
+                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
                         </div>
                         <div id="ipdataco" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5">
                             <dd class="text-slate-800">ipdataco.io</dd>
-                            <dd id="ip" class="col-span-2 text-slate-500">Error.</dd>
-                            <dd class="col-span-2 text-slate-800"><span id="country"></span>  <span id="isp">Try to disable adblock</span>  <span id="asn"></span>  <span id="city"></span></dd>
+                            <dd id="ip" class="ip col-span-2 text-slate-500">Error.</dd>
+                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
                         </div>
                         <div id="ipinfo" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5">
                             <dd class="text-slate-800">ipinfo.io</dd>
-                            <dd id="ip" class="col-span-2 text-slate-500">Error.</dd>
-                            <dd class="col-span-2 text-slate-800"><span id="country"></span>  <span id="isp">Try to disable adblock</span>  <span id="asn"></span>  <span id="city"></span></dd>
+                            <dd id="ip" class="ip col-span-2 text-slate-500">Error.</dd>
+                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
                         </div>
                         <div id="ipapi" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5">
                             <dd class="text-slate-800">ipapi.co</dd>
-                            <dd id="ip" class="col-span-2 text-slate-500">Error.</dd>
-                            <dd class="col-span-2 text-slate-800"><span id="country"></span>  <span id="isp">Try to disable adblock</span>  <span id="asn"></span>  <span id="city"></span></dd>
+                            <dd id="ip" class="ip col-span-2 text-slate-500">Error.</dd>
+                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
                         </div>
                         <div id="freeipapi" class="py-4 grid sm:grid-cols-2 md:grid-cols-5">
                             <dd class="text-slate-800">freeipapi.com</dd>
-                            <dd id="ip" class="col-span-2 text-slate-500">Error.</dd>
-                            <dd class="col-span-2 text-slate-800"><span id="country"></span>  <span id="isp">Try to disable adblock</span>  <span id="asn"></span>  <span id="city"></span></dd>
+                            <dd id="ip" class="ip col-span-2 text-slate-500">Error.</dd>
+                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
                         </div>
                     </div>
            
         </div>   
         <div>
-            CDN endpoint: <p id="end_ip-api"><span id="ip"></span>  <span id="isp"></span></p>
-            CDN endpoint: <p id="sharkdns"><span id="ip"></span>  <span id="isp"></span></p>
-            CDN endpoint: <p id="browserleaks"><span id="ip"></span>  <span id="isp"></span></p>
+            CDN endpoint: <p id="end_ip-api"><span class="ip"></span>  <span class="isp"></span></p>
+            CDN endpoint: <p id="sharkdns"><span class="ip"></span>  <span class="isp"></span></p>
         </div>
 
     </div>
-
+    
     <script src="getip.js"></script>
 </body>
 </html>
