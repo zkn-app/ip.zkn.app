@@ -5,7 +5,7 @@ const ipwhoisInfo = document.getElementById("ipwhois");
 fetch("https://ipwho.is/")
     .then(response => {
         if(!response.ok){
-            throw new Error('Risposta non ok'); 
+            throw new Error('Risposta non ok');
         }
         return response.json();
     })
@@ -16,10 +16,10 @@ fetch("https://ipwho.is/")
         ipwhoisInfo.querySelector(".city").innerText = data.city;
         ipwhoisInfo.querySelector(".isp").innerText = data.connection.isp;
         ipwhoisInfo.querySelector(".asn").innerText = data.connection.asn
-        
+
     })
     .catch(error => {
-        
+
         console.error('problemi con fetch operation:', error);
 
     });
@@ -30,7 +30,7 @@ const ipgeolocation = document.getElementById("ipgeolocation");
 fetch("https://api.ipgeolocation.io/ipgeo?apiKey=08638ed1c63a477bb1f84b38bafeb1e8&ip=")
     .then(response => {
         if(!response.ok){
-            throw new Error('Risposta non ok'); 
+            throw new Error('Risposta non ok');
         }
         return response.json();
     })
@@ -43,7 +43,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=08638ed1c63a477bb1f84b38bafeb1e
         ipgeolocation.querySelector(".asn").innerText = "";
     })
     .catch(error => {
-        
+
         console.error('problemi con fetch operation:', error);
 
     });
@@ -53,7 +53,7 @@ const ipdataco = document.getElementById("ipdataco");
 fetch("https://api.ipdata.co/?api-key=98ef8fdb3c05da4960af979d6e7656a546d0bd66d8c11b0add46ff8f")
     .then(response => {
         if(!response.ok){
-            throw new Error('Risposta non ok'); 
+            throw new Error('Risposta non ok');
         }
         return response.json();
     })
@@ -74,7 +74,7 @@ fetch("https://api.ipdata.co/?api-key=98ef8fdb3c05da4960af979d6e7656a546d0bd66d8
         document.getElementById('is_known_attacker').innerText = data.threat.is_known_attacker;
     })
     .catch(error => {
-        
+
         console.error('problemi con fetch operation:', error);
 
     });
@@ -84,7 +84,7 @@ const ipinfo = document.getElementById("ipinfo");
 fetch("https://ipinfo.io/json")
     .then(response => {
         if(!response.ok){
-            throw new Error('Risposta non ok'); 
+            throw new Error('Risposta non ok');
         }
         return response.json();
     })
@@ -96,7 +96,7 @@ fetch("https://ipinfo.io/json")
         ipinfo.querySelector(".isp").innerText = data.org;
     })
     .catch(error => {
-        
+
         console.error('problemi con fetch operation:', error);
 
     });
@@ -108,7 +108,7 @@ const ipapi = document.getElementById("ipapi");
 fetch("https://ipapi.co/json/")
     .then(response => {
         if(!response.ok){
-            throw new Error('Risposta non ok'); 
+            throw new Error('Risposta non ok');
         }
         return response.json();
     })
@@ -121,10 +121,10 @@ fetch("https://ipapi.co/json/")
         ipapi.querySelector(".asn").innerText = data['asn'];
     })
     .catch(error => {
-        
+
         console.error('problemi con fetch operation:', error);
 
-      });
+    });
 
 
 //Free ip api
@@ -132,25 +132,25 @@ const freeipapi = document.getElementById("freeipapi");
 
 // Esegui la richiesta Fetch all'API
 fetch("https://freeipapi.com/api/json/")
-  .then(response => {
-    // Verifica se la risposta è ok (status 200-299)
-    if (!response.ok) {
-      throw new Error('Risposta non ok');
-    }
-    return response.json(); // Trasforma la risposta in JSON
-  })
-  .then(data => {
-    ip_addrInfo.freeipapi = data.ipAddress;
-    freeipapi.querySelector(".ip").innerText = data.ipAddress || "Non disponibile";
-    freeipapi.querySelector(".country").innerText = data.countryName || "Non disponibile";
-    freeipapi.querySelector(".city").innerText = data.cityName || "Non disponibile";
-    freeipapi.querySelector(".isp").innerText = data.isp || "";
-    freeipapi.querySelector(".asn").innerText = data.asn || "";
-  })
-  .catch(error => {
-    // eventuali errori nella richiesta o nella trasformazione in JSON
-    console.error('problemi con fetch operation:', error);
-  });
+    .then(response => {
+        // Verifica se la risposta è ok (status 200-299)
+        if (!response.ok) {
+            throw new Error('Risposta non ok');
+        }
+        return response.json(); // Trasforma la risposta in JSON
+    })
+    .then(data => {
+        ip_addrInfo.freeipapi = data.ipAddress;
+        freeipapi.querySelector(".ip").innerText = data.ipAddress || "Non disponibile";
+        freeipapi.querySelector(".country").innerText = data.countryName || "Non disponibile";
+        freeipapi.querySelector(".city").innerText = data.cityName || "Non disponibile";
+        freeipapi.querySelector(".isp").innerText = data.isp || "";
+        freeipapi.querySelector(".asn").innerText = data.asn || "";
+    })
+    .catch(error => {
+        // eventuali errori nella richiesta o nella trasformazione in JSON
+        console.error('problemi con fetch operation:', error);
+    });
 
 
 
@@ -207,8 +207,8 @@ hide_ip.addEventListener('change', () => {
             elem.innerText = "Ip Hidden";
         }
     })
-    
-    
+
+
 
 })
 
