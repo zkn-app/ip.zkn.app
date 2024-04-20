@@ -196,12 +196,13 @@ const ip_container =  document.getElementById("ip-container");
 const hide_ip =  document.getElementById("hide-ip");
 hide_ip.addEventListener('change', () => {
     ip_container.querySelectorAll('.ip').forEach(function(elem){
+        //console.log(elem.parentElement.parentElement.id)
         if(elem.innerText === "Ip Hidden"){
             //console.log(ip_addrInfo[elem.parentElement.id])
-            if(ip_addrInfo[elem.parentElement.id] == undefined){
+            if(ip_addrInfo[elem.parentElement.parentElement.id] == undefined){
                 elem.innerText = "Error";
             }else{
-                elem.innerText = ip_addrInfo[elem.parentElement.id];
+                elem.innerText = ip_addrInfo[elem.parentElement.parentElement.id];
             }
         }else{
             elem.innerText = "Ip Hidden";
@@ -212,4 +213,4 @@ hide_ip.addEventListener('change', () => {
 
 })
 
-//console.log(ip_addrInfo)
+console.log(ip_addrInfo)
