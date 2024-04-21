@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/gh/zkn-app/zkn.app@master/sitePoint.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/zkn-app/fonts@latest/fonts/roboto.min.css');
         @import url('https://cdn.jsdelivr.net/gh/zkn-app/fonts@0.0.2/fonts/Cascadia/Cascadia-Mono.min.css');
@@ -25,10 +26,12 @@
     </nav>
     <div class="2xl:grid 2xl:grid-cols-2 2xl:gap-4">
         <!-- Ip info container -->
+        <div id="iptitle" class="font-bold text-2xl text-center py-8"><h1 class="text-gray-500">IL TUO INDIRIZZO IP:</h1>
+                <span class="ip text-gray-900 text-4xl"></span> 
+        </div>
         <div id="ip-container" class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
                     <div  class="inline-flex">
-                        <h1 class="text-xl font-bold">Il tuo indirizzo ip </h1>
-                            <label id="hide-ip" class="inline-flex cursor-pointer pl-8">
+                            <label id="hide-ip" class="inline-flex cursor-pointer">
                                 <input type="checkbox" value="hide-ip" class="sr-only peer">
                                 <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                                 <span class="ms-3 text-sm font-medium text-gray-900">Hide ip</span>
@@ -38,32 +41,37 @@
                         <div id="ipwhois" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
                             <dd class="text-slate-800">ipwhois.io</dd>
                             <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
+                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
+                        </div>
+                        <div id="identme" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
+                            <dd class="text-slate-800">ident.me</dd>
+                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
+                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
                         </div>
                         <div id="ipgeolocation" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
                             <dd class="text-slate-800">ipgeolocation.io</dd>
                             <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
+                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
                         </div>
                         <div id="ipdataco" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
                             <dd class="text-slate-800">ipdataco.io</dd>
                             <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
+                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
                         </div>
                         <div id="ipinfo" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
                             <dd class="text-slate-800">ipinfo.io</dd>
                             <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
+                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
                         </div>
                         <div id="ipapi" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
                             <dd class="text-slate-800">ipapi.co</dd>
                             <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
+                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
                         </div>
                         <div id="freeipapi" class="py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
                             <dd class="text-slate-800">freeipapi.com</dd>
                             <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800"><span class="country"></span>  <span class="isp">Try to disable adblock</span>  <span class="asn"></span>  <span class="city"></span></dd>
+                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
                         </div>
                     </div>
            
@@ -87,9 +95,9 @@
                 <div id="ipdata-threat" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
                     <dd class="col-span-2">Tor: <span id="is_tor"></span></dd>
                     <dd class="col-span-2">Porxy: <span id="is_proxy"></span></dd>
-                    <dd class="col-span-2 text-slate-800">Datacenter: <span id="is_datacenter"></span></dd>
+                    <dd class="col-span-2">Datacenter: <span id="is_datacenter"></span></dd>
                     <dd class="col-span-2">Anonymous: <span id="is_anonymous"></span></dd>
-                    <dd class="col-span-2 text-slate-800">Abuser: <span id="is_known_abuser"></span></dd>
+                    <dd class="col-span-2">Abuser: <span id="is_known_abuser"></span></dd>
                     <dd class="col-span-2">Attacker: <span id="is_known_attacker"></span></dd>
                 </div>
             </div>

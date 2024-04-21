@@ -1,4 +1,24 @@
 let ip_addrInfo = {};
+//nahida api
+
+const iptitle = document.getElementById("iptitle");
+fetch("https://iptest.nahida.one/json")
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Risposta non ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        ip_addrInfo.nah_info = data.ip;
+        iptitle.querySelector(".ip").innerText = data.ip;
+    })
+    .catch(error => {
+        ip_addrInfo.nah_info = "2345:0425:2CA1:0000:0000:0567:5673:23b5";
+        iptitle.querySelector(".ip").innerText = "2345:0425:2CA1:0000:0000:0567:5673:23b5";
+        console.error('problemi con fetch operation:', error);
+
+    });
 
 //ipwhois
 const ipwhoisInfo = document.getElementById("ipwhois");
@@ -12,11 +32,28 @@ fetch("https://ipwho.is/")
     .then(data => {
         ip_addrInfo.ipwhois = data.ip;
         ipwhoisInfo.querySelector(".ip").innerText = data.ip;
-        ipwhoisInfo.querySelector(".country").innerText = data.country;
-        ipwhoisInfo.querySelector(".city").innerText = data.city;
-        ipwhoisInfo.querySelector(".isp").innerText = data.connection.isp;
-        ipwhoisInfo.querySelector(".asn").innerText = data.connection.asn
+        ipwhoisInfo.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.country_code.toLowerCase()}"></i> ${data.country || ''} ${data.city || ''} ${data.connection.isp || ''} ${data.connection.asn || ''}</span>`;
+    })
+    .catch(error => {
 
+        console.error('problemi con fetch operation:', error);
+
+    });
+
+
+//ident me
+const identme = document.getElementById("identme");
+fetch("https://ident.me/json")
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Risposta non ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        ip_addrInfo.identme = data.ip;
+        identme.querySelector(".ip").innerText = data.ip;
+        identme.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.cc.toLowerCase()}"></i> ${data.country || ''} ${data.city || ''} ${data.aso || ''} ${data.asn || ''}</span>`;
     })
     .catch(error => {
 
@@ -37,10 +74,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=08638ed1c63a477bb1f84b38bafeb1e
     .then(data => {
         ip_addrInfo.ipgeolocation = data.ip;
         ipgeolocation.querySelector(".ip").innerText = data.ip;
-        ipgeolocation.querySelector(".country").innerText = data.country_name;
-        ipgeolocation.querySelector(".city").innerText = data.city;
-        ipgeolocation.querySelector(".isp").innerText = data.isp;
-        ipgeolocation.querySelector(".asn").innerText = "";
+        ipgeolocation.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.country_code2.toLowerCase()}"></i> ${data.country_name || ''} ${data.city || ''} ${data.isp || ''} ${data.asn || ''}</span>`;
     })
     .catch(error => {
 
@@ -60,10 +94,7 @@ fetch("https://api.ipdata.co/?api-key=98ef8fdb3c05da4960af979d6e7656a546d0bd66d8
     .then(data => {
         ip_addrInfo.ipdataco = data.ip;
         ipdataco.querySelector(".ip").innerText = data.ip;
-        ipdataco.querySelector(".country").innerText = data.country_name;
-        ipdataco.querySelector(".city").innerText = data.city;
-        ipdataco.querySelector(".isp").innerText = data['asn'].name;
-        ipdataco.querySelector(".asn").innerText = data['asn'].asn;
+        ipdataco.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.country_code.toLowerCase()}"></i> ${data.country_name || ''} ${data.city || ''} ${data['asn'].name || ''} ${data['asn'].asn || ''}</span>`;
         //codice temporaneo
         document.getElementById('is_threat').innerText = data.threat.is_threat;
         document.getElementById('is_tor').innerText = data.threat.is_tor;
@@ -91,9 +122,7 @@ fetch("https://ipinfo.io/json")
     .then(data => {
         ip_addrInfo.ipinfo = data.ip;
         ipinfo.querySelector(".ip").innerText = data.ip;
-        ipinfo.querySelector(".country").innerText = data.country;
-        ipinfo.querySelector(".city").innerText = data.city;
-        ipinfo.querySelector(".isp").innerText = data.org;
+        ipinfo.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.country.toLowerCase()}"></i> ${data.country || ''} ${data.city || ''} ${data.org || ''} ${data.asn || ''}</span>`;
     })
     .catch(error => {
 
@@ -115,10 +144,7 @@ fetch("https://ipapi.co/json/")
     .then(data => {
         ip_addrInfo.ipapi = data.ip;
         ipapi.querySelector(".ip").innerText = data.ip;
-        ipapi.querySelector(".country").innerText = data.country_name;
-        ipapi.querySelector(".city").innerText = data.city;
-        ipapi.querySelector(".isp").innerText = data.org;
-        ipapi.querySelector(".asn").innerText = data['asn'];
+        ipapi.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.country_code.toLowerCase()}"></i> ${data.country_name || ''} ${data.city || ''} ${data.org || ''} ${data['asn'] || ''}</span>`;
     })
     .catch(error => {
 
@@ -142,10 +168,7 @@ fetch("https://freeipapi.com/api/json/")
     .then(data => {
         ip_addrInfo.freeipapi = data.ipAddress;
         freeipapi.querySelector(".ip").innerText = data.ipAddress || "Non disponibile";
-        freeipapi.querySelector(".country").innerText = data.countryName || "Non disponibile";
-        freeipapi.querySelector(".city").innerText = data.cityName || "Non disponibile";
-        freeipapi.querySelector(".isp").innerText = data.isp || "";
-        freeipapi.querySelector(".asn").innerText = data.asn || "";
+        freeipapi.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.countryCode.toLowerCase()}"></i> ${data.countryName || ''} ${data.cityName || ''} ${data.isp || ''} ${data.asn || ''}</span>`;
     })
     .catch(error => {
         // eventuali errori nella richiesta o nella trasformazione in JSON
@@ -208,9 +231,13 @@ hide_ip.addEventListener('change', () => {
             elem.innerText = "Ip Hidden";
         }
     })
+    if(iptitle.querySelector('.ip').textContent == ip_addrInfo.nah_info){
+        iptitle.querySelector('.ip').innerText = "0.0.0.0";
+    }else{
+        iptitle.querySelector('.ip').innerText = ip_addrInfo.nah_info;
+    }
 
-
-
+    
 })
 
 console.log(ip_addrInfo)
