@@ -14,9 +14,7 @@ fetch("https://iptest.nahida.one/json")
         iptitle.querySelector(".ip").innerText = data.ip;
     })
     .catch(error => {
-        ip_addrInfo.nah_info = "2345:0425:2CA1:0000:0000:0567:5673:23b5";
-        iptitle.querySelector(".ip").innerText = "2345:0425:2CA1:0000:0000:0567:5673:23b5";
-        console.error('problemi con fetch operation:', error);
+       console.error('problemi con fetch operation:', error);
 
     });
 
