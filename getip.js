@@ -2,6 +2,7 @@ let ip_addrInfo = {};
 
 
 //nahida api
+/*
 const iptitle = document.getElementById("iptitle");
 fetch("https://iptest.nahida.one/json")
     .then(response => {
@@ -19,7 +20,7 @@ fetch("https://iptest.nahida.one/json")
        console.error('problemi con fetch operation:', error);
 
     });
-
+*/
 //ipwhois
 const ipwhoisInfo = document.getElementById("ipwhois");
 fetch("https://ipwho.is/")
@@ -231,13 +232,13 @@ hide_ip.addEventListener('change', () => {
             elem.innerText = "Ip Hidden";
         }
     })
+    /*
     if(iptitle.querySelector('.ip').textContent == ip_addrInfo.nah_info){
         iptitle.querySelector('.ip').innerText = "0.0.0.0";
     }else{
         iptitle.querySelector('.ip').innerText = ip_addrInfo.nah_info;
     }
-
-    
+    */
 })
 
 console.log(ip_addrInfo)
