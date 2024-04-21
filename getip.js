@@ -1,6 +1,7 @@
 let ip_addrInfo = {};
-//nahida api
 
+
+//nahida api
 const iptitle = document.getElementById("iptitle");
 fetch("https://iptest.nahida.one/json")
     .then(response => {
@@ -10,6 +11,7 @@ fetch("https://iptest.nahida.one/json")
         return response.json();
     })
     .then(data => {
+        console.log(data)
         ip_addrInfo.nah_info = data.ip;
         iptitle.querySelector(".ip").innerText = data.ip;
     })
