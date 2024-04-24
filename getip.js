@@ -2,9 +2,9 @@ let ip_addrInfo = {};
 
 
 //nahida api
-/*
+
 const iptitle = document.getElementById("iptitle");
-fetch("https://iptest.nahida.one/json")
+fetch("https://api.nahida.one/ip/")
     .then(response => {
         if(!response.ok){
             throw new Error('Risposta non ok');
@@ -20,7 +20,7 @@ fetch("https://iptest.nahida.one/json")
        console.error('problemi con fetch operation:', error);
 
     });
-*/
+
 //ipwhois
 const ipwhoisInfo = document.getElementById("ipwhois");
 fetch("https://ipwho.is/")
