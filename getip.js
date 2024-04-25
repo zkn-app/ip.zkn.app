@@ -216,17 +216,29 @@ function randomAlphaString(max){
     }
     return out_str;
 }
-const ip_container =  document.getElementById("ip-container");
+const ip_container = document.getElementById("ip-container");
 const hide_ip =  document.getElementById("hide-ip");
-hide_ip.addEventListener('change', () => {
+hide_ip.addEventListener('click', () => {
+    const hide_ip_text = hide_ip.querySelector('.text');
+    const hide_ip_svg = hide_ip.querySelector('.svg-icon');
+    if(hide_ip_svg.src.indexOf('src/show.svg') !== -1){
+        hide_ip_svg.src = "src/hidden.svg";
+    }else{
+        hide_ip_svg.src = "src/show.svg";
+    }
+    if(hide_ip_text.textContent == "Toggle IP Addresses"){
+        hide_ip_text.innerText = "Hide IP Addresses";
+    }else{
+        hide_ip_text.innerText = "Toggle IP Addresses";
+    }
     ip_container.querySelectorAll('.ip').forEach(function(elem){
-        //console.log(elem.parentElement.parentElement.id)
+        //console.log(elem.parentElement.id)
         if(elem.innerText === "Ip Hidden"){
             //console.log(ip_addrInfo[elem.parentElement.id])
-            if(ip_addrInfo[elem.parentElement.parentElement.id] == undefined){
+            if(ip_addrInfo[elem.parentElement.id] == undefined){
                 elem.innerText = "Error";
             }else{
-                elem.innerText = ip_addrInfo[elem.parentElement.parentElement.id];
+                elem.innerText = ip_addrInfo[elem.parentElement.id];
             }
         }else{
             elem.innerText = "Ip Hidden";

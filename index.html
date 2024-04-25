@@ -19,90 +19,373 @@
         }
     </style>
 </head>
-<body class="bg-white p-0">
-    <nav class="bg-slate-50 p-2 border-b">
-        <h1 class="text-slate-800 text-xl md:text-3xl font-bold pt-3 pl-3"><span class="title">@IP/tools</span> <span class="text-xs">by<span class="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent"> zkn</span></span></h1>
-    </nav>
-    <div id="iptitle" class="font-bold text-2xl text-center py-8"><h1 class="text-gray-500">IL TUO INDIRIZZO IP:</h1>
-        <span class="ip text-gray-900 text-4xl text-nowrap"></span> 
-    </div>  
-    <div class="2xl:grid 2xl:grid-cols-2 2xl:gap-4">
-        <!-- Ip info container -->
-        
-        <div id="ip-container" class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
-                    <div  class="inline-flex">
-                            <label id="hide-ip" class="inline-flex cursor-pointer">
-                                <input type="checkbox" value="hide-ip" class="sr-only peer">
-                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                                <span class="ms-3 text-sm font-medium text-gray-900">Hide ip</span>
-                            </label>
-                    </div>
-                    <div class="w-full text-sm overflow-x-auto text-nowrap">
-                        <div id="ipwhois" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                            <dd class="text-slate-800">ipwhois.io</dd>
-                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
-                        </div>
-                        <div id="identme" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                            <dd class="text-slate-800">ident.me</dd>
-                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
-                        </div>
-                        <div id="ipgeolocation" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                            <dd class="text-slate-800">ipgeolocation.io</dd>
-                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
-                        </div>
-                        <div id="ipdataco" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                            <dd class="text-slate-800">ipdataco.io</dd>
-                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
-                        </div>
-                        <div id="ipinfo" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                            <dd class="text-slate-800">ipinfo.io</dd>
-                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
-                        </div>
-                        <div id="ipapi" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                            <dd class="text-slate-800">ipapi.co</dd>
-                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
-                        </div>
-                        <div id="freeipapi" class="py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                            <dd class="text-slate-800">freeipapi.com</dd>
-                            <dd class="col-span-2"><span class="ip bg-neutral-200 rounded-full px-2">Error</span></dd>
-                            <dd class="col-span-2 text-slate-800 ip-addr"><span>Try to disable adblock</span></dd>
-                        </div>
-                    </div>
-           
-        </div> 
-        <div>
-            <div id="edns-container" class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
-                <h1 class="text-xl font-bold">CDN endpoint</h1> 
-                <div id="end_ip-api" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                    <dd class="text-slate-800">ip-api.com</dd>
-                    <dd class="ip col-span-2"></dd>
-                    <dd class="isp col-span-2 text-slate-800"></dd>
-                </div>
-                <div id="sharkdns" class="py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                    <dd class="text-slate-800">Shark</dd>
-                    <dd class="ip col-span-2"></dd>
-                    <dd class="isp col-span-2 text-slate-800"></dd>
-                </div>
-            </div>
-            <div id="edns-container" class="text-gray-500 m-4 p-4 bg-white border rounded-md drop-shadow-md">
-                <h1 class="text-xl font-bold">Minaccia: <span id="is_threat"></span></h1> 
-                <div id="ipdata-threat" class="border-b py-4 grid sm:grid-cols-2 md:grid-cols-5 hover:bg-slate-50">
-                    <dd class="col-span-2">Tor: <span id="is_tor"></span></dd>
-                    <dd class="col-span-2">Porxy: <span id="is_proxy"></span></dd>
-                    <dd class="col-span-2">Datacenter: <span id="is_datacenter"></span></dd>
-                    <dd class="col-span-2">Anonymous: <span id="is_anonymous"></span></dd>
-                    <dd class="col-span-2">Abuser: <span id="is_known_abuser"></span></dd>
-                    <dd class="col-span-2">Attacker: <span id="is_known_attacker"></span></dd>
-                </div>
-            </div>
-        </div>  
+<!--
+// v0 by Vercel.
+// https://v0.dev/t/tbHgvv2G3la
+-->
+
+<header class="w-full bg-gray-900 text-white py-4">
+    <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-5 h-5"
+        >
+          <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+          <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+          <path d="M3 12A9 3 0 0 0 21 12"></path>
+        </svg>
+        <span class="text-lg font-medium">IP Lookup by zkn.app</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-4 h-4"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+          </svg>
+          <span>About</span>
+        </button>
+        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-4 h-4"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <path d="M12 17h.01"></path>
+          </svg>
+          <span>Help</span>
+        </button>
+      </div>
     </div>
+  </header>
+  <section class="w-full py-12 md:py-16 lg:py-20">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="mb-8 md:mb-10 lg:mb-12">
+        <h1 class="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">IP Address Databases</h1>
+        <p class="mt-2 text-gray-500 dark:text-gray-400 md:text-lg">
+          A comprehensive list of IP address databases with location, ISP, and ASN details.
+        </p>
+      </div>
+      <div class="grid gap-6">
+        <div id="ip-container" class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
+          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              >
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                <path d="M3 12A9 3 0 0 0 21 12"></path>
+              </svg>
+              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">IP Addresses</span>
+            </div>
+            <button id="hide-ip" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2">
+              <img src="src/show.svg" class="svg-icon w-4 h-4" alt="svg" />
+              <span class="text">Toggle IP Addresses</span>
+            </button>
+          </div>
+          <table class="w-full table-auto">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+              <tr>
+                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">Database</th>
+                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">IP Address</th>
+                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">
+                  Location, ISP, ASN
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tr id="ipwhois">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipwho.is</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  Error
+                </td>
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  
+                </td>
+              </tr>
+              <tr id="identme">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ident.me</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  Error
+                </td>
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  
+                </td>
+              </tr>
+              <tr id="ipgeolocation">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipgeolocation.io</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  Error
+                </td>
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  
+                </td>
+              </tr>
+              <tr id="ipdataco">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipdataco.io</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  Error
+                </td>
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  
+                </td>
+              </tr>
+              <tr id="ipinfo">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipinfo.io</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  Error
+                </td>
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  
+                </td>
+              </tr>
+              <tr id="ipapi">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipapi.co</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  Error
+                </td>
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  
+                </td>
+              </tr>
+              <tr id="freeipapi">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">freeipapi.com</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  Error
+                </td>
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
+          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">WHOIS Lookup</span>
+            </div>
+            <input
+              class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full max-w-xs"
+              placeholder="Enter an IP address or domain"
+              disabled=""
+              type="text"
+            />
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2"
+              disabled=""
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-4 h-4"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              <span>Lookup</span>
+            </button>
+          </div>
+          <div class="p-4 text-sm text-gray-500 dark:text-gray-400">
+            <p>WHOIS lookup feature coming soon.</p>
+          </div>
+        </div>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
+          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">IP Address Type</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                <span>Residential</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                <span>Proxy</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+                <span>Abuser</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                <span>Tor</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
+                <span>Datacenter</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 text-sm text-gray-500 dark:text-gray-400">
+            <p>
+              The IP address databases listed on this page provide information about the type of IP address, which can
+              be useful for understanding the nature of the network and potential risks associated with the IP
+              address. The different types of IP addresses are:
+            </p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>
+                <span class="font-medium">Residential:</span> IP addresses assigned to individual users or households,
+                typically by Internet Service Providers (ISPs).
+              </li>
+              <li>
+                <span class="font-medium">Proxy:</span> IP addresses associated with proxy servers or VPN services,
+                which can be used to mask the true origin of internet traffic.
+              </li>
+              <li>
+                <span class="font-medium">Abuser:</span> IP addresses that have been identified as being involved in
+                malicious or unauthorized activities, such as spam, hacking, or other cybercrime.
+              </li>
+              <li>
+                <span class="font-medium">Tor:</span> IP addresses associated with the Tor network, which is a
+                privacy-focused internet protocol that can be used to anonymize internet traffic.
+              </li>
+              <li>
+                <span class="font-medium">Datacenter:</span> IP addresses assigned to servers or infrastructure
+                located in data centers, which are often used for hosting websites, web applications, and other online
+                services.
+              </li>
+            </ul>
+            <p class="mt-4">Understanding the type of IP address can be useful for a variety of purposes, such as:</p>
+            <ul class="list-disc pl-6 mt-2">
+              <li>Identifying potential security risks or malicious activity associated with an IP address.</li>
+              <li>
+                Determining the appropriate level of trust or scrutiny to apply when interacting with an IP address,
+                based on its type.
+              </li>
+              <li>Optimizing content delivery or geolocation-based services based on the type of IP address.</li>
+              <li>
+                Analyzing internet traffic patterns and trends based on the distribution of different IP address
+                types.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
+          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">IP Address Type for 1.1.1.1</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
+                <span>Datacenter: Yes</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                <span>Proxy: Yes</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                <span>Residential: No</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 text-sm text-gray-500 dark:text-gray-400">
+            <p>
+              The IP address 1.1.1.1 is identified as a Datacenter IP address and a Proxy IP address, but not a
+              Residential IP address. This information can be useful for understanding the nature of the network and
+              potential risks associated with this IP address.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     
     <script src="getip.js"></script>
     <p class="text-center font-bold">Made with <i class="fa-solid fa-heart text-red-500"></i> in italy</p>
