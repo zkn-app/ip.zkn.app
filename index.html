@@ -43,7 +43,7 @@
           <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
           <path d="M3 12A9 3 0 0 0 21 12"></path>
         </svg>
-        <span class="text-lg font-medium">IP Lookup by zkn.app</span>
+        <span class="text-lg font-medium">IP Checker by zkn.app</span>
       </div>
       <div class="flex items-center gap-4">
         <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2">
@@ -91,14 +91,14 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="mb-8 md:mb-10 lg:mb-12">
         <h1 class="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">IP Address Databases</h1>
-        <p class="mt-2 text-gray-500 dark:text-gray-400 md:text-lg">
+        <p class="mt-2 text-gray-500 md:text-lg">
           A comprehensive list of IP address databases with location, ISP, and ASN details.
         </p>
       </div>
       <div class="grid gap-6">
-        <div id="ip-container" class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
-          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-            <div class="flex items-center gap-2">
+        <div id="ip-container" class="overflow-x-auto rounded-lg border border-gray-200">
+         <div class="flex flex-col md:flex-row items-center justify-between bg-gray-50 px-4 py-3 border-b border-gray-200">
+          <div class="flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -109,98 +109,101 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                class="w-5 h-5 text-gray-500"
               >
                 <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                 <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                 <path d="M3 12A9 3 0 0 0 21 12"></path>
               </svg>
-              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">IP Addresses</span>
+              <span class="text-sm font-medium text-gray-900">IP Addresses</span>
             </div>
-            <button id="hide-ip" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2">
+            <button id="hide-ip" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2 mt-4 md:mt-0">
               <img src="src/show.svg" class="svg-icon w-4 h-4" alt="svg" />
               <span class="text">Toggle IP Addresses</span>
             </button>
           </div>
-          <table class="w-full table-auto">
-            <thead class="bg-gray-50 dark:bg-gray-800">
+          <div class="overflow-x-auto">
+            <table class="w-full table-auto">
+            <thead class="bg-gray-50">
               <tr>
-                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">Database</th>
-                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">IP Address</th>
-                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100">
+                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900">Database</th>
+                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900">IP Address</th>
+                <th class="px-4 py-3 text-left text-sm font-medium text-gray-900">
                   Location, ISP, ASN
                 </th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody class="divide-y divide-gray-200">
               <tr id="ipwhois">
-                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipwho.is</td>
-                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">ipwho.is</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500">
                   Error
                 </td>
-                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500">
                   
                 </td>
               </tr>
               <tr id="identme">
-                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ident.me</td>
-                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">ident.me</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500">
                   Error
                 </td>
-                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500">
                   
                 </td>
               </tr>
               <tr id="ipgeolocation">
-                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipgeolocation.io</td>
-                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">ipgeolocation.io</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500">
                   Error
                 </td>
-                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500">
                   
                 </td>
               </tr>
               <tr id="ipdataco">
-                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipdataco.io</td>
-                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">ipdataco.io</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500">
                   Error
                 </td>
-                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500">
                   
                 </td>
               </tr>
               <tr id="ipinfo">
-                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipinfo.io</td>
-                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">ipinfo.io</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500">
                   Error
                 </td>
-                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500">
                   
                 </td>
               </tr>
               <tr id="ipapi">
-                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">ipapi.co</td>
-                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">ipapi.co</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500">
                   Error
                 </td>
-                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500">
                   
                 </td>
               </tr>
               <tr id="freeipapi">
-                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">freeipapi.com</td>
-                <td class="ip px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">freeipapi.com</td>
+                <td class="ip px-4 py-3 text-sm text-gray-500">
                   Error
                 </td>
-                <td class="ip-addr px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
+                <td class="ip-addr px-4 py-3 text-sm text-gray-500">
                   
                 </td>
               </tr>
             </tbody>
+            
           </table>
-        </div>
-        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
-          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+          </div>
+          
+      
+          <div class="flex flex-col md:flex-row items-center justify-between bg-gray-50 px-4 py-3 border-y border-gray-200">
             <div class="flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -212,47 +215,46 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                class="w-6 h-6 text-gray-500"
               >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" x2="22" y1="12" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
-              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">WHOIS Lookup</span>
+              <span class="text-sm font-medium text-gray-900">DSN IP Address</span>
             </div>
-            <input
-              class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full max-w-xs"
-              placeholder="Enter an IP address or domain"
-              disabled=""
-              type="text"
-            />
-            <button
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2"
-              disabled=""
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-4 h-4"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path>
-              </svg>
-              <span>Lookup</span>
-            </button>
           </div>
-          <div class="p-4 text-sm text-gray-500 dark:text-gray-400">
-            <p>WHOIS lookup feature coming soon.</p>
+          <div class="overflow-x-auto px-4 py-3 border-b border-gray-200">
+            <table id="edns-container" class="w-full table-auto">
+              <tbody class="divide-y divide-gray-200">
+                <tr id="end_ip-api">
+                  <td class="px-4 py-3 text-sm font-medium text-gray-900">ipapi.co</td>
+                  <td class="ip px-4 py-3 text-sm text-gray-500">
+                    Error
+                  </td>
+                  <td class="isp px-4 py-3 text-sm text-gray-500">
+                    
+                  </td>
+                </tr>
+                <tr id="sharkdns">
+                  <td class="px-4 py-3 text-sm font-medium text-gray-900">freeipapi.com</td>
+                  <td class="ip px-4 py-3 text-sm text-gray-500">
+                    Error
+                  </td>
+                  <td class="isp px-4 py-3 text-sm text-gray-500">
+                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          
+            
         </div>
-        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
-          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <!-- IP Address Type -->
+       
+        <div class="overflow-x-auto rounded-lg border border-gray-200">
+          <div class="flex flex-col md:flex-row items-center justify-between bg-gray-50 px-4 py-3 border-b border-gray-200">
             <div class="flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -264,38 +266,36 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                class="w-5 h-5 text-gray-500"
               >
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M12 16v-4"></path>
                 <path d="M12 8h.01"></path>
               </svg>
-              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">IP Address Type</span>
+              <span class="text-sm font-medium text-gray-900">
+                IP Address Type for <span id="ip-type">0.0.0.0</span>
+              </span>
             </div>
-            <div class="flex items-center gap-4">
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
-                <span>Residential</span>
-              </div>
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                <span>Proxy</span>
-              </div>
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-red-500 rounded-full"></div>
-                <span>Abuser</span>
-              </div>
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
-                <span>Tor</span>
-              </div>
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
-                <span>Datacenter</span>
-              </div>
+            <div id="ipdata-threat" class="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
+                <div class="flex items-center gap-2 text-sm">
+                  <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                  Porxy: <span id="is_proxy">
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+                  Abuser: <span id="is_known_abuser"></span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                  Tor: <span id="is_tor">
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
+                  Datacenter: <span id="is_datacenter"></span>
+                </div>
             </div>
           </div>
-          <div class="p-4 text-sm text-gray-500 dark:text-gray-400">
+          <div class="p-4 text-sm text-gray-500">
             <p>
               The IP address databases listed on this page provide information about the type of IP address, which can
               be useful for understanding the nature of the network and potential risks associated with the IP
@@ -339,8 +339,10 @@
             </ul>
           </div>
         </div>
-        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
-          <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <!-- IP Address type - end-->
+        <!-- WHOIS LOOKUP - start -->
+        <div class="overflow-x-auto rounded-lg border border-gray-200">
+          <div class="flex items-center justify-between bg-gray-50 px-4 py-3 border-b border-gray-200">
             <div class="flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -352,37 +354,46 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                class="w-5 h-5 text-gray-500"
               >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 16v-4"></path>
-                <path d="M12 8h.01"></path>
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
               </svg>
-              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">IP Address Type for 1.1.1.1</span>
+              <span class="text-sm font-medium text-gray-900">WHOIS Lookup</span>
             </div>
-            <div class="flex items-center gap-4">
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
-                <span>Datacenter: Yes</span>
-              </div>
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                <span>Proxy: Yes</span>
-              </div>
-              <div class="flex items-center gap-2 text-sm">
-                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
-                <span>Residential: No</span>
-              </div>
-            </div>
+            <input
+              class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full max-w-xs"
+              placeholder="Enter an IP address or domain"
+              disabled=""
+              type="text"
+            />
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2"
+              disabled=""
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-4 h-4"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              <span>Lookup</span>
+            </button>
           </div>
-          <div class="p-4 text-sm text-gray-500 dark:text-gray-400">
-            <p>
-              The IP address 1.1.1.1 is identified as a Datacenter IP address and a Proxy IP address, but not a
-              Residential IP address. This information can be useful for understanding the nature of the network and
-              potential risks associated with this IP address.
-            </p>
+          <div class="p-4 text-sm text-gray-500">
+            <p>WHOIS lookup feature coming soon.</p>
           </div>
         </div>
+        <!-- WHOIS - end -->
       </div>
     </div>
   </section>

@@ -97,13 +97,13 @@ fetch("https://api.ipdata.co/?api-key=98ef8fdb3c05da4960af979d6e7656a546d0bd66d8
         ipdataco.querySelector(".ip").innerText = data.ip;
         ipdataco.querySelector(".ip-addr").innerHTML = `<span><i class="fi fi-${data.country_code.toLowerCase()}"></i> ${data.country_name || ''} ${data.city || ''} ${data['asn'].name || ''} ${data['asn'].asn || ''}</span>`;
         //codice temporaneo
-        document.getElementById('is_threat').innerText = data.threat.is_threat;
+        //document.getElementById('is_threat').innerText = data.threat.is_threat;
+        document.getElementById('ip-type').innerText = data.ip;
         document.getElementById('is_tor').innerText = data.threat.is_tor;
         document.getElementById('is_proxy').innerText = data.threat.is_proxy;
         document.getElementById('is_datacenter').innerText = data.threat.is_datacenter;
-        document.getElementById('is_anonymous').innerText = data.threat.is_anonymous;
+        //document.getElementById('is_anonymous').innerText = data.threat.is_anonymous;
         document.getElementById('is_known_abuser').innerText = data.threat.is_known_abuser;
-        document.getElementById('is_known_attacker').innerText = data.threat.is_known_attacker;
     })
     .catch(error => {
 
@@ -186,7 +186,7 @@ dnsendpoint_ip_api_XML.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200){
         let ip_api = JSON.parse(this.responseText);
         dnsendpoint_ip_api.querySelector(".ip").innerText = ip_api.dns.ip;
-        dnsendpoint_ip_api.querySelector(".isp").innerText = ip_api.dns.geo;
+        dnsendpoint_ip_api.querySelector(".isp").innerHTML = ip_api.dns.geo;
     }
 }
 dnsendpoint_ip_api_XML.open('GET', 'https://' + randomAlphaString(32) + '.edns.ip-api.com/json');
